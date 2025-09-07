@@ -1,11 +1,19 @@
 ---
-title: Test Post
-author: Suffian Azizan
+title: "First Test Post"
+author: "Suffian Azizan"
+authorAvatarPath: "https://github.com/sufyazi.png?size=150"
 date: '2025-08-28'
 draft: false
+summary: "This is a test post to check the blog static serve setup."
+toc: true
+readTime: true
+autonumber: true
+math: true
+hideBackToTop: false
 categories:
   - Example
   - Hugo
+showTags: true
 tags:
   - blogdown
   - Markdown
