@@ -11,7 +11,7 @@ tag = 'tags'
 
 [params]
 # Meta description
-description = "Things Recollected"
+description = "Personal static blog of Suffian Azizan"
 
 # Appearance settings
 theme = 'auto'
@@ -22,6 +22,7 @@ faviconPath = '/res-rec-favicon-io'
 # Intro on main page, content is markdown
 homeIntroTitle = 'Hiya!'
 homeIntroContent = """
+Things Recollected. (Personal blog of Suffian Azizan)
 """
 
 # Collection to display on home
