@@ -2,6 +2,9 @@ baseURL = 'https://sufyazi.github.io/'
 languageCode = 'en-us'
 title = 'Res Recordata'
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
 
 [taxonomies]
 tag = 'tags'
