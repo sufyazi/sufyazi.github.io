@@ -1,0 +1,92 @@
+baseURL = 'https://sufyazi.github.io/'
+languageCode = 'en-us'
+title = 'Res Recordata'
+
+
+[taxonomies]
+tag = 'tags'
+
+[params]
+# Meta description
+description = "Things Recollected"
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'default'
+hideHeader = false
+faviconPath = '/res-rec-favicon-io'
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'Hiya!'
+homeIntroContent = """
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Posts'
+homeCollection = 'posts'
+
+# Lists parameters
+paginationSize = 100
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+[params.breadcrumbs]
+enabled = true
+showCurrentPage = true
+home = "Home"
+
+# Social icons
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/sufyazi/"
+
+[[params.social]]
+name = "twitter"
+url = "https://www.x.com/sufyazi"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/sufyazi"
+
+# Main menu pages
+[[params.menu]]
+name = "home"
+url = "/"
+
+[[params.menu]]
+name = "posts"
+url = "/posts/"
+
+[[params.menu]]
+name = "about"
+url = "/about"
+
+[[params.menu]]
+name = "pages"
+url = "/pages"
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'xcode'
+
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+# Giscus comments
+[params.giscus]
+enable = false
+repo = "user/repo"
+repoid = "repoId"
+category = "General"
+categoryid = "categoryId"
+mapping = "pathname"
+theme = "preferred_color_scheme"
+
+[module]
+[[module.imports]]
+path = "github.com/tomfran/typo"
+
+

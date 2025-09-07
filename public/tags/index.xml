@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Res Recordata</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Res Recordata</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blogdown</title>
+      <link>http://localhost:1313/tags/blogdown/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/blogdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>http://localhost:1313/tags/markdown/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MathJax</title>
+      <link>http://localhost:1313/tags/mathjax/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mathjax/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pandoc</title>
+      <link>http://localhost:1313/tags/pandoc/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pandoc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RStudio</title>
+      <link>http://localhost:1313/tags/rstudio/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rstudio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Algorithms</title>
+      <link>http://localhost:1313/tags/algorithms/</link>
+      <pubDate>Wed, 27 Aug 2025 10:30:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Wed, 27 Aug 2025 10:30:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Interview-Prep</title>
+      <link>http://localhost:1313/tags/interview-prep/</link>
+      <pubDate>Wed, 27 Aug 2025 10:30:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/interview-prep/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sorting</title>
+      <link>http://localhost:1313/tags/sorting/</link>
+      <pubDate>Wed, 27 Aug 2025 10:30:00 +0530</pubDate>
+      <guid>http://localhost:1313/tags/sorting/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Res Recordata</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on Res Recordata</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Post</title>
+      <link>http://localhost:1313/posts/example-post/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/example-post/</guid>
+      <description>&lt;p&gt;This sample post is mainly for&#xA;&lt;a href=&#34;https://github.com/rstudio/blogdown&#34;&gt;&lt;strong&gt;blogdown&lt;/strong&gt;&lt;/a&gt; users. If you do not use&#xA;&lt;strong&gt;blogdown&lt;/strong&gt;, you can skip the first section.&lt;/p&gt;&#xA;&lt;h1 class=&#34;heading&#34; id=&#34;1-markdown-or-r-markdown&#34;&gt;&#xA;  1. Markdown or R Markdown&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-markdown-or-r-markdown&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;This is a post written in plain Markdown (&lt;code&gt;*.md&lt;/code&gt;) instead of R Markdown&#xA;(&lt;code&gt;*.Rmd&lt;/code&gt;). The major differences are:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;You cannot run any R code in a plain Markdown document, whereas in an R&#xA;Markdown document, you can embed R code chunks (&lt;code&gt;```{r}&lt;/code&gt;);&lt;/li&gt;&#xA;&lt;li&gt;A plain Markdown post is rendered through&#xA;&lt;a href=&#34;https://gohugo.io/overview/configuration/&#34;&gt;Goldmark&lt;/a&gt; by default, and an R&#xA;Markdown document is compiled by&#xA;&lt;a href=&#34;http://rmarkdown.rstudio.com&#34;&gt;&lt;strong&gt;rmarkdown&lt;/strong&gt;&lt;/a&gt; and&#xA;&lt;a href=&#34;http://pandoc.org&#34;&gt;Pandoc&lt;/a&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;There are differences in syntax between Goldmark&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s&#xA;Markdown. For example, Goldmark does not support LaTeX math and Pandoc does. I&#xA;have added the KaTeX support to this theme (i.e.,&#xA;&lt;a href=&#34;https://github.com/yihui/hugo-xmin&#34;&gt;hugo-xmin&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mastering Go Sorting: Your Interview Cheatsheet</title>
+      <link>http://localhost:1313/posts/go_sorting_cheatsheet/</link>
+      <pubDate>Wed, 27 Aug 2025 10:30:00 +0530</pubDate>
+      <guid>http://localhost:1313/posts/go_sorting_cheatsheet/</guid>
+      <description>Master Go&amp;rsquo;s built-in sorting capabilities for technical interviews. From basic slices.Sort() to custom comparison functions and stable sorting - everything you need to ace sorting questions.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;div align=&#34;center&#34;&gt;&#xA;  &lt;img src=&#34;https://github.com/sufyazi.png?size=150&#34; alt=&#34;Suffian Azizan&#34;&#xA;    style=&#34;border-radius: 50%; margin-bottom: 20px;&#34; /&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div style=&#34;text-align: center; font-style: italic; margin-bottom: 30px;&#34;&gt;&#xA;  &#xA;Data Scientist/Cancer Bioinformatician | Armchair Linguist&#xA;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;social-icons&#34; style=&#34;text-align: center; margin: 20px 0;&#34;&gt;&#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;  &#xA;&#xA;  &#xA;  &lt;a href=&#34;https://github.com/sufyazi&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer me&#34; title=&#34;Github&#34;&#xA;    style=&#34;display: inline-block; margin: 0 10px;&#34;&gt;&#xA;    &lt;img src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg&#34; alt=&#34;Github&#34;&#xA;      width=&#34;24&#34; height=&#34;24&#34; style=&#34;vertical-align: middle;&#34; /&gt;&#xA;  &lt;/a&gt;&#xA;  &#xA;  &lt;a href=&#34;mailto:sufyazi@outlook.com&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer me&#34; title=&#34;Gmail&#34;&#xA;    style=&#34;display: inline-block; margin: 0 10px;&#34;&gt;&#xA;    &lt;img src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg&#34; alt=&#34;Gmail&#34;&#xA;      width=&#34;24&#34; height=&#34;24&#34; style=&#34;vertical-align: middle;&#34; /&gt;&#xA;  &lt;/a&gt;&#xA;  &#xA;  &lt;a href=&#34;https://www.linkedin.com/in/sufyazi/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer me&#34; title=&#34;Linkedin&#34;&#xA;    style=&#34;display: inline-block; margin: 0 10px;&#34;&gt;&#xA;    &lt;img src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg&#34; alt=&#34;Linkedin&#34;&#xA;      width=&#34;24&#34; height=&#34;24&#34; style=&#34;vertical-align: middle;&#34; /&gt;&#xA;  &lt;/a&gt;&#xA;  &#xA;  &lt;a href=&#34;https://medium.com/@talesman&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer me&#34; title=&#34;Medium&#34;&#xA;    style=&#34;display: inline-block; margin: 0 10px;&#34;&gt;&#xA;    &lt;img src=&#34;https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/medium.svg&#34; alt=&#34;Medium&#34;&#xA;      width=&#34;24&#34; height=&#34;24&#34; style=&#34;vertical-align: middle;&#34; /&gt;&#xA;  &lt;/a&gt;&#xA;  &#xA;&lt;/div&gt;&#xA;&#xA;&lt;h2 class=&#34;heading&#34; id=&#34;about&#34;&gt;&#xA;  About&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#about&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 class=&#34;heading&#34; id=&#34;hi-there&#34;&gt;&#xA;  Hi there!&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#hi-there&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Hello there! I am Suffian Azizan, a bioinformatician and a language enthusiast or of all things linguistics&lt;/strong&gt;. Welcome to my little blog, where I post thoughts or writings that were either adapted from my physical journals or typed down fresh whenever I have time. I work as a bioinformatician in cancer research but in my free time I love reading about linguistics. If you find yourself here from the outer Internet, feel free to browse around and read.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

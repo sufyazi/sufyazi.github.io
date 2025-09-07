@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313/res-rec-favicon-io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/res-rec-favicon-io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/res-rec-favicon-io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313/res-rec-favicon-io/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/res-rec-favicon-io/apple-touch-icon.png">
+
+<meta name="description" content="Complete guide to Go sorting functions including slices.Sort(), slices.SortFunc(), and slices.SortStableFunc() with real interview examples and performance considerations."/>
+
+
+<meta name="fediverse:creator" content="@username@instance.url">
+
+
+<title>
+    
+    Mastering Go Sorting: Your Interview Cheatsheet | Res Recordata
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/go_sorting_cheatsheet/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/go_sorting_cheatsheet/">
+  <meta property="og:site_name" content="Res Recordata">
+  <meta property="og:title" content="Mastering Go Sorting: Your Interview Cheatsheet">
+  <meta property="og:description" content="Complete guide to Go sorting functions including slices.Sort(), slices.SortFunc(), and slices.SortStableFunc() with real interview examples and performance considerations.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-27T10:30:00+05:30">
+    <meta property="article:modified_time" content="2025-08-27T10:30:00+05:30">
+    <meta property="article:tag" content="Go">
+    <meta property="article:tag" content="Algorithms">
+    <meta property="article:tag" content="Interview-Prep">
+    <meta property="article:tag" content="Sorting">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.b8602c438a5914ec2e65e96d7864b0dfee366f662b5c632076734d520d461717.css" media="all">
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">Res Recordata</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/posts/" >
+                /posts
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/about" >
+                /about
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/pages" >
+                /pages
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a class="breadcrumbs-current" href="/posts/go_sorting_cheatsheet/">Mastering Go Sorting: Your Interview Cheatsheet</a>
+</div>
+
+
+
+<div  class="autonumber" >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">Mastering Go Sorting: Your Interview Cheatsheet</h1>
+    
+    <p class="single-summary">Master Go&rsquo;s built-in sorting capabilities for technical interviews. From basic slices.Sort() to custom comparison functions and stable sorting - everything you need to ace sorting questions.</p>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2025-08-27T10:30:00&#43;05:30">August 27, 2025</time>
+      
+
+      
+      &nbsp; · &nbsp;
+      6 min read
+      
+    </p>
+
+  </div>
+
+  
+
+  
+  
+
+  <div class="single-tags">
+    
+    <span>
+      <a href="http://localhost:1313/tags/go/">#Go</a>
+    </span>
+    
+    
+    <span>
+      <a href="http://localhost:1313/tags/algorithms/">#Algorithms</a>
+    </span>
+    
+    
+    <span>
+      <a href="http://localhost:1313/tags/interview-prep/">#Interview-Prep</a>
+    </span>
+    
+    
+    <span>
+      <a href="http://localhost:1313/tags/sorting/">#Sorting</a>
+    </span>
+    
+    
+  </div>
+
+  
+  
+
+  
+
+  
+  <aside class="toc">
+    <p><strong>Table of contents</strong></p>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-foundation-slicessort">The Foundation: slices.Sort()</a></li>
+    <li><a href="#custom-sorting-with-slicessortfunc">Custom Sorting with slices.SortFunc()</a>
+      <ul>
+        <li><a href="#understanding-the-comparison-function">Understanding the Comparison Function</a></li>
+        <li><a href="#reverse-sorting">Reverse Sorting</a></li>
+        <li><a href="#sorting-by-custom-criteria">Sorting by Custom Criteria</a></li>
+        <li><a href="#sorting-complex-data-structures">Sorting Complex Data Structures</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-power-of-cmpcompare">The Power of cmp.Compare()</a></li>
+    <li><a href="#stable-sorting-when-order-matters">Stable Sorting: When Order Matters</a></li>
+    <li><a href="#performance-considerations">Performance Considerations</a></li>
+    <li><a href="#common-interview-patterns">Common Interview Patterns</a>
+      <ul>
+        <li><a href="#pattern-1-sort-and-search">Pattern 1: Sort and Search</a></li>
+        <li><a href="#pattern-2-custom-comparisons">Pattern 2: Custom Comparisons</a></li>
+        <li><a href="#pattern-3-multiple-sort-keys">Pattern 3: Multiple Sort Keys</a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-reference-guide">Quick Reference Guide</a></li>
+    <li><a href="#the-bottom-line">The Bottom Line</a></li>
+  </ul>
+</nav>
+  </aside>
+  
+
+  
+
+  <div class="single-content">
+    <p>Sorting algorithms are a cornerstone of computer science interviews, but here&rsquo;s the thing: you don&rsquo;t always need to implement quicksort from scratch. Go&rsquo;s powerful built-in sorting capabilities can help you solve complex problems elegantly while demonstrating your knowledge of the standard library.</p>
+<p>Whether you&rsquo;re preparing for a FAANG interview or just want to level up your Go skills, this comprehensive guide covers everything you need to know about sorting in Go.</p>
+<h2 class="heading" id="the-foundation-slicessort">
+  The Foundation: slices.Sort()
+  <a class="anchor" href="#the-foundation-slicessort">#</a>
+</h2>
+<p>Go 1.21 introduced the <code>slices</code> package, making sorting more intuitive than ever. For basic data types, <code>slices.Sort()</code> is all you need:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">package</span> <span style="color:#000">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c41a16">&#34;slices&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Sort string slices</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">strs</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">string</span>{<span style="color:#c41a16">&#34;c&#34;</span>, <span style="color:#c41a16">&#34;a&#34;</span>, <span style="color:#c41a16">&#34;b&#34;</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#000">slices</span>.<span style="color:#000">Sort</span>(<span style="color:#000">strs</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#c41a16">&#34;Strings:&#34;</span>, <span style="color:#000">strs</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Output: Strings: [a b c]</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Sort integers</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">ints</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">int</span>{<span style="color:#1c01ce">7</span>, <span style="color:#1c01ce">2</span>, <span style="color:#1c01ce">4</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#000">slices</span>.<span style="color:#000">Sort</span>(<span style="color:#000">ints</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#c41a16">&#34;Ints:&#34;</span>, <span style="color:#000">ints</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Output: Ints: [2 4 7]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The beauty of <code>slices.Sort()</code> lies in its simplicity. It works with any slice of comparable elements and uses Go&rsquo;s type system to determine the appropriate comparison logic. Under the hood, it implements a hybrid sorting algorithm that combines quicksort and heapsort for optimal performance across different data patterns.</p>
+<h2 class="heading" id="custom-sorting-with-slicessortfunc">
+  Custom Sorting with slices.SortFunc()
+  <a class="anchor" href="#custom-sorting-with-slicessortfunc">#</a>
+</h2>
+<p>Real-world problems rarely involve sorting simple integers. This is where <code>slices.SortFunc()</code> shines. It accepts a comparison function that defines your custom ordering logic.</p>
+<p>The comparison function signature is crucial to understand:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#000">T</span>) <span style="color:#a90d91">int</span>
+</span></span></code></pre></div><p>Your function should return:</p>
+<ul>
+<li>A <strong>negative number</strong> when <code>a &lt; b</code></li>
+<li><strong>Zero</strong> when <code>a == b</code></li>
+<li>A <strong>positive number</strong> when <code>a &gt; b</code></li>
+</ul>
+<h3 class="heading" id="understanding-the-comparison-function">
+  Understanding the Comparison Function
+  <a class="anchor" href="#understanding-the-comparison-function">#</a>
+</h3>
+<p>Let me break this down with a concrete example. When Go needs to determine if element <code>a</code> should come before element <code>b</code> in the sorted result, it calls your comparison function:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#177500">// If you want ascending order (smallest to largest)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">compareAscending</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#a90d91">int</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">a</span> &lt; <span style="color:#000">b</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">-</span><span style="color:#1c01ce">1</span>  <span style="color:#177500">// &#34;a should come before b&#34;</span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#a90d91">else</span> <span style="color:#a90d91">if</span> <span style="color:#000">a</span> &gt; <span style="color:#000">b</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#1c01ce">1</span>   <span style="color:#177500">// &#34;a should come after b&#34; </span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#1c01ce">0</span>       <span style="color:#177500">// &#34;a and b are equal, order doesn&#39;t matter&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <strong>positive number</strong> case (<code>a &gt; b</code>) tells Go: &ldquo;element <code>a</code> is greater than element <code>b</code>, so <code>a</code> should come <strong>after</strong> <code>b</code> in the final sorted order.&rdquo;</p>
+<p>For example, if you&rsquo;re comparing <code>7</code> and <code>2</code>:</p>
+<ul>
+<li><code>7 &gt; 2</code>, so return positive number</li>
+<li>This means <code>7</code> should come after <code>2</code></li>
+<li>Result: <code>[2, 7]</code> (ascending order)</li>
+</ul>
+<h3 class="heading" id="reverse-sorting">
+  Reverse Sorting
+  <a class="anchor" href="#reverse-sorting">#</a>
+</h3>
+<p>One of the most common interview variations is reverse sorting:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">ints</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">int</span>{<span style="color:#1c01ce">7</span>, <span style="color:#1c01ce">2</span>, <span style="color:#1c01ce">4</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#000">slices</span>.<span style="color:#000">SortFunc</span>(<span style="color:#000">ints</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#a90d91">int</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">b</span>, <span style="color:#000">a</span>) <span style="color:#177500">// Notice the reversed arguments</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#c41a16">&#34;Ints:&#34;</span>, <span style="color:#000">ints</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Output: Ints: [7 4 2]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The key insight here is swapping the arguments to <code>cmp.Compare()</code>. When comparing <code>7</code> and <code>2</code>, instead of <code>cmp.Compare(7, 2)</code> which returns positive (meaning 7 &gt; 2), we do <code>cmp.Compare(2, 7)</code> which returns negative (meaning 2 &lt; 7, so 7 should come first).</p>
+<h3 class="heading" id="sorting-by-custom-criteria">
+  Sorting by Custom Criteria
+  <a class="anchor" href="#sorting-by-custom-criteria">#</a>
+</h3>
+<p>Let&rsquo;s tackle a common interview scenario: sorting strings by length.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fruits</span> <span style="color:#000">:=</span> []<span style="color:#a90d91">string</span>{<span style="color:#c41a16">&#34;peach&#34;</span>, <span style="color:#c41a16">&#34;banana&#34;</span>, <span style="color:#c41a16">&#34;kiwi&#34;</span>}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Sort by string length</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">slices</span>.<span style="color:#000">SortFunc</span>(<span style="color:#000">fruits</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#a90d91">string</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#a90d91">len</span>(<span style="color:#000">a</span>), <span style="color:#a90d91">len</span>(<span style="color:#000">b</span>))
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">fruits</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Output: [kiwi peach banana]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This pattern scales beautifully to more complex scenarios. The comparison function encapsulates your sorting logic, making your code both readable and maintainable.</p>
+<h3 class="heading" id="sorting-complex-data-structures">
+  Sorting Complex Data Structures
+  <a class="anchor" href="#sorting-complex-data-structures">#</a>
+</h3>
+<p>Here&rsquo;s where interviews get interesting. Sorting structs by fields is a frequent ask:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">type</span> <span style="color:#000">Person</span> <span style="color:#a90d91">struct</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">name</span> <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">age</span>  <span style="color:#a90d91">int</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000">people</span> <span style="color:#000">:=</span> []<span style="color:#000">Person</span>{
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;Jax&#34;</span>, <span style="color:#000">age</span>: <span style="color:#1c01ce">37</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;TJ&#34;</span>, <span style="color:#000">age</span>: <span style="color:#1c01ce">25</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;Alex&#34;</span>, <span style="color:#000">age</span>: <span style="color:#1c01ce">72</span>},
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Sort by age (ascending)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">slices</span>.<span style="color:#000">SortFunc</span>(<span style="color:#000">people</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#000">Person</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">a</span>.<span style="color:#000">age</span>, <span style="color:#000">b</span>.<span style="color:#000">age</span>)
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">people</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Output: [{TJ 25} {Jax 37} {Alex 72}]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For multi-field sorting (common in advanced interviews), you can chain comparisons:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#177500">// Sort by age, then by name for ties</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">slices</span>.<span style="color:#000">SortFunc</span>(<span style="color:#000">people</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#000">Person</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">ageComp</span> <span style="color:#000">:=</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">a</span>.<span style="color:#000">age</span>, <span style="color:#000">b</span>.<span style="color:#000">age</span>); <span style="color:#000">ageComp</span> <span style="color:#000">!=</span> <span style="color:#1c01ce">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">ageComp</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">a</span>.<span style="color:#000">name</span>, <span style="color:#000">b</span>.<span style="color:#000">name</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 class="heading" id="the-power-of-cmpcompare">
+  The Power of cmp.Compare()
+  <a class="anchor" href="#the-power-of-cmpcompare">#</a>
+</h2>
+<p>The <code>cmp.Compare()</code> function is your Swiss Army knife for comparisons. Introduced alongside the <code>slices</code> package, it provides a consistent interface for comparing any ordered type:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">import</span> <span style="color:#c41a16">&#34;cmp&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// Returns:</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// -1 if x &lt; y</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">//  0 if x == y</span>
+</span></span><span style="display:flex;"><span><span style="color:#177500">// +1 if x &gt; y</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">result</span> <span style="color:#000">:=</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">x</span>, <span style="color:#000">y</span>)
+</span></span></code></pre></div><p>This function works seamlessly with integers, floats, strings, and any type that implements the comparable constraint. It eliminates the boilerplate of manual comparisons and reduces the chance of bugs in your comparison logic.</p>
+<h2 class="heading" id="stable-sorting-when-order-matters">
+  Stable Sorting: When Order Matters
+  <a class="anchor" href="#stable-sorting-when-order-matters">#</a>
+</h2>
+<p>Here&rsquo;s a critical detail that can make or break an interview answer: <strong>Go&rsquo;s standard sorting functions are not stable</strong>. This means equal elements might change their relative order during sorting.</p>
+<p>For stable sorting, Go provides <code>slices.SortStableFunc()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a90d91">func</span> <span style="color:#000">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">type</span> <span style="color:#000">Student</span> <span style="color:#a90d91">struct</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#000">name</span>  <span style="color:#a90d91">string</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">grade</span> <span style="color:#a90d91">int</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000">students</span> <span style="color:#000">:=</span> []<span style="color:#000">Student</span>{
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;Alice&#34;</span>, <span style="color:#000">grade</span>: <span style="color:#1c01ce">85</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;Bob&#34;</span>, <span style="color:#000">grade</span>: <span style="color:#1c01ce">90</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;Charlie&#34;</span>, <span style="color:#000">grade</span>: <span style="color:#1c01ce">85</span>},
+</span></span><span style="display:flex;"><span>        {<span style="color:#000">name</span>: <span style="color:#c41a16">&#34;David&#34;</span>, <span style="color:#000">grade</span>: <span style="color:#1c01ce">90</span>},
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Stable sort by grade - students with same grade keep their original order</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">slices</span>.<span style="color:#000">SortStableFunc</span>(<span style="color:#000">students</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#000">Student</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">a</span>.<span style="color:#000">grade</span>, <span style="color:#000">b</span>.<span style="color:#000">grade</span>)
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#000">fmt</span>.<span style="color:#000">Println</span>(<span style="color:#000">students</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Output: [{Alice 85} {Charlie 85} {Bob 90} {David 90}]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#177500">// Notice Alice comes before Charlie (original order preserved)</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Interview tip</strong>: Always clarify with your interviewer whether stability is required. It demonstrates your attention to detail and understanding of algorithmic nuances.</p>
+<h2 class="heading" id="performance-considerations">
+  Performance Considerations
+  <a class="anchor" href="#performance-considerations">#</a>
+</h2>
+<p>Go&rsquo;s sorting functions are highly optimized:</p>
+<ul>
+<li><strong>Time complexity</strong>: O(n log n) average and worst-case</li>
+<li><strong>Space complexity</strong>: O(log n) for recursion stack</li>
+<li><strong>Algorithm</strong>: Hybrid of quicksort and heapsort (introsort)</li>
+</ul>
+<p>The implementation automatically switches algorithms based on data patterns, ensuring consistent performance across different inputs.</p>
+<h2 class="heading" id="common-interview-patterns">
+  Common Interview Patterns
+  <a class="anchor" href="#common-interview-patterns">#</a>
+</h2>
+<h3 class="heading" id="pattern-1-sort-and-search">
+  Pattern 1: Sort and Search
+  <a class="anchor" href="#pattern-1-sort-and-search">#</a>
+</h3>
+<p>Many interview problems combine sorting with binary search:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#177500">// Sort first, then use binary search</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">slices</span>.<span style="color:#000">Sort</span>(<span style="color:#000">numbers</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000">index</span> <span style="color:#000">:=</span> <span style="color:#000">slices</span>.<span style="color:#000">BinarySearch</span>(<span style="color:#000">numbers</span>, <span style="color:#000">target</span>)
+</span></span></code></pre></div><h3 class="heading" id="pattern-2-custom-comparisons">
+  Pattern 2: Custom Comparisons
+  <a class="anchor" href="#pattern-2-custom-comparisons">#</a>
+</h3>
+<p>Problems often require sorting by computed values:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#177500">// Sort points by distance from origin</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">slices</span>.<span style="color:#000">SortFunc</span>(<span style="color:#000">points</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#000">Point</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000">distA</span> <span style="color:#000">:=</span> <span style="color:#000">a</span>.<span style="color:#000">x</span><span style="color:#000">*</span><span style="color:#000">a</span>.<span style="color:#000">x</span> <span style="color:#000">+</span> <span style="color:#000">a</span>.<span style="color:#000">y</span><span style="color:#000">*</span><span style="color:#000">a</span>.<span style="color:#000">y</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">distB</span> <span style="color:#000">:=</span> <span style="color:#000">b</span>.<span style="color:#000">x</span><span style="color:#000">*</span><span style="color:#000">b</span>.<span style="color:#000">x</span> <span style="color:#000">+</span> <span style="color:#000">b</span>.<span style="color:#000">y</span><span style="color:#000">*</span><span style="color:#000">b</span>.<span style="color:#000">y</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">distA</span>, <span style="color:#000">distB</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h3 class="heading" id="pattern-3-multiple-sort-keys">
+  Pattern 3: Multiple Sort Keys
+  <a class="anchor" href="#pattern-3-multiple-sort-keys">#</a>
+</h3>
+<p>Enterprise-level problems often involve complex sorting criteria:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#177500">// Sort employees by department, then by salary (desc), then by name</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">slices</span>.<span style="color:#000">SortFunc</span>(<span style="color:#000">employees</span>, <span style="color:#a90d91">func</span>(<span style="color:#000">a</span>, <span style="color:#000">b</span> <span style="color:#000">Employee</span>) <span style="color:#a90d91">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">deptComp</span> <span style="color:#000">:=</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">a</span>.<span style="color:#000">department</span>, <span style="color:#000">b</span>.<span style="color:#000">department</span>); <span style="color:#000">deptComp</span> <span style="color:#000">!=</span> <span style="color:#1c01ce">0</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">deptComp</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">if</span> <span style="color:#000">salaryComp</span> <span style="color:#000">:=</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">b</span>.<span style="color:#000">salary</span>, <span style="color:#000">a</span>.<span style="color:#000">salary</span>); <span style="color:#000">salaryComp</span> <span style="color:#000">!=</span> <span style="color:#1c01ce">0</span> { <span style="color:#177500">// Note: reversed for desc</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a90d91">return</span> <span style="color:#000">salaryComp</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a90d91">return</span> <span style="color:#000">cmp</span>.<span style="color:#000">Compare</span>(<span style="color:#000">a</span>.<span style="color:#000">name</span>, <span style="color:#000">b</span>.<span style="color:#000">name</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h2 class="heading" id="quick-reference-guide">
+  Quick Reference Guide
+  <a class="anchor" href="#quick-reference-guide">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Operation</th>
+          <th>Function</th>
+          <th>Key Points</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Basic sort</td>
+          <td><code>slices.Sort(slice)</code></td>
+          <td>Works with comparable types, not stable</td>
+      </tr>
+      <tr>
+          <td>Custom sort</td>
+          <td><code>slices.SortFunc(slice, cmp)</code></td>
+          <td>Flexible, not stable</td>
+      </tr>
+      <tr>
+          <td>Stable custom sort</td>
+          <td><code>slices.SortStableFunc(slice, cmp)</code></td>
+          <td>Preserves equal element order</td>
+      </tr>
+      <tr>
+          <td>Comparison</td>
+          <td><code>cmp.Compare(x, y)</code></td>
+          <td>Returns -1, 0, or +1</td>
+      </tr>
+  </tbody>
+</table>
+<h2 class="heading" id="the-bottom-line">
+  The Bottom Line
+  <a class="anchor" href="#the-bottom-line">#</a>
+</h2>
+<p>Mastering Go&rsquo;s sorting capabilities gives you a significant advantage in technical interviews. The key is knowing when to use each function and understanding the trade-offs between performance, stability, and code clarity.</p>
+<p>Remember: great engineers don&rsquo;t just write working code—they write code that&rsquo;s maintainable, efficient, and demonstrates deep understanding of the tools at their disposal. Go&rsquo;s sorting functions help you achieve all three.</p>
+<p>The next time you encounter a sorting problem in an interview, you&rsquo;ll have the confidence to choose the right tool for the job and explain your reasoning clearly. That&rsquo;s the difference between a good candidate and a great one.</p>
+<p><em>Want to dive deeper into Go&rsquo;s standard library? The <code>slices</code> package contains many other useful functions that can simplify your interview solutions. Happy coding!</em></p>
+
+    
+  </div>
+
+  
+
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/example-post/">
+                        Test Post
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+    
+    <p>Powered by
+        <a href="https://gohugo.io/">Hugo</a>
+        and
+        <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+
+</body>
+
+<script>
+
+  function isAuto() {
+    return document.body.classList.contains("auto");
+  }
+
+  function setTheme() {
+    if (!isAuto()) {
+      return
+    }
+
+    document.body.classList.remove("auto");
+    let cls = "light";
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      cls = "dark";
+    }
+
+    document.body.classList.add(cls);
+  }
+
+  function invertBody() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+  }
+
+  if (isAuto()) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(invertBody);
+  }
+
+  setTheme();
+
+</script>
+
+<script defer src="/js/copy-code.js"></script>
+</html>

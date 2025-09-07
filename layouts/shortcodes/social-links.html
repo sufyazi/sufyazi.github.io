@@ -1,0 +1,16 @@
+<div class="social-icons" style="text-align: center; margin: 20px 0;">
+  {{ $links := slice }}
+  {{ range $key, $value := .Params }}
+  {{ if ne $key "inner" }}
+  {{ $links = $links | append (dict "name" $key "url" ($value | safeURL)) }}
+  {{ end }}
+  {{ end }}
+
+  {{ range $links }}
+  <a href="{{ .url }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}"
+    style="display: inline-block; margin: 0 10px;">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/{{ .name }}.svg" alt="{{ .name | title }}"
+      width="24" height="24" style="vertical-align: middle;" />
+  </a>
+  {{ end }}
+</div>
